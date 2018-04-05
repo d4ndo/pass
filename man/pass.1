@@ -427,6 +427,10 @@ Specifies the number of seconds to wait before restoring the clipboard, by defau
 .I PASSWORD_STORE_UMASK
 Sets the umask of all files modified by pass, by default \fI077\fP.
 .TP
+.I PASSWORD_STORE_FUZZY
+Sets the fuzzy search command. "fzf", "pick", "icepick", "selecta", "peco".
+Usage: \fBpass **<TAB>\fP.
+.TP
 .I PASSWORD_STORE_GENERATED_LENGTH
 The default password length if the \fIpass-length\fP parameter to \fBgenerate\fP
 is unspecified.

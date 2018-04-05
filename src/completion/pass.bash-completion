@@ -82,6 +82,20 @@ _pass()
 	COMPREPLY=()
 	local cur="${COMP_WORDS[COMP_CWORD]}"
 	local commands="init ls find grep show insert generate edit rm mv cp git help version"
+	local fuzzycmd="${PASSWORD_STORE_FUZZY}"
+	local pwdir="${PASSWORD_STORE_DIR:-$HOME/.password-store/}"
+	local stringsize="${#pwdir}"
+	let "stringsize+=1"
+	trigger="**"
+
+	if [[ ${COMP_WORDS[COMP_CWORD]} == "$trigger" ]]; then
+		tput sc
+		COMPREPLY=($(find "$pwdir" -name "*.gpg" | cut -c "$stringsize"- | sed -e 's/\(.*\)\.gpg/\1/' |	"$fuzzycmd" | tr "\n" ' '))
+		tput rc
+		#_pass_complete_entries
+		return 0
+	fi
+
 	if [[ $COMP_CWORD -gt 1 ]]; then
 		local lastarg="${COMP_WORDS[$COMP_CWORD-1]}"
 		case "${COMP_WORDS[1]}" in
