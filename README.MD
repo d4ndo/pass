@@ -29,8 +29,8 @@ Recommended:
 Clone this repository : 
 
 ```bash
-git clone https://github.com/d4ndo/password-store.git
-cd password-store
+git clone https://github.com/d4ndo/pass.git
+cd pass
 make install-common
 ```
 
